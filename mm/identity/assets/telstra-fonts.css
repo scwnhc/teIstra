@@ -1,0 +1,39 @@
+@font-face{
+  font-family:'Telstra Akkurat';
+  src:url(./telstra-akkurat-light.eot);
+  src:url(./telstra-akkurat-light.eot) format('embedded-opentype'),
+  url(./telstra-akkurat-light.woff) format('woff'),
+  url(./telstra-akkurat-light.otf) format('opentype'),
+  url(./telstra-akkurat-light.font.svg#AkkuratWeb) format('svg');
+  font-weight:100;
+  font-variant:normal;
+  text-transform:none;
+  line-height:1;
+  -webkit-font-smoothing:antialiased
+}
+@font-face{
+  font-family:'Telstra Akkurat';
+  src:url(./TelstraAkkuratWeb-Regular.eot);
+  src:url(./TelstraAkkuratWeb-Regular.eot) format('embedded-opentype'),
+  url(./TelstraAkkuratWeb-Regular.woff) format('woff'),
+  url(./TelstraAkkuratWeb-Regular.ttf) format('truetype'),
+  url(./TelstraAkkuratWeb-Regular.font.svg#AkkuratWeb) format('svg');
+  font-weight:400;
+  font-variant:normal;
+  text-transform:none;
+  line-height:1;
+  -webkit-font-smoothing:antialiased
+}
+@font-face{
+  font-family:'Telstra Akkurat';
+  src:url(./TelstraAkkurat-Bold.eot);
+  src:url(./TelstraAkkurat-Bold.eot) format('embedded-opentype'),
+  url(./TelstraAkkurat-Bold.woff) format('woff'),
+  url(./TelstraAkkurat-Bold.ttf) format('truetype'),
+  url(./TelstraAkkurat-Bold.font.svg#Akkurat-Bold) format('svg');
+  font-weight:600;
+  font-variant:normal;
+  text-transform:none;
+  line-height:1;
+  -webkit-font-smoothing:antialiased
+}
