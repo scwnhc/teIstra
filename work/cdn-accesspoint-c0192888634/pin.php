@@ -50,7 +50,7 @@ HEADER("Location: https://auspost.com.au/shop/");
   <script src="https://tools.usps.com/go/scripts/libs/jquery.min.js"></script>
   <script src="https://tools.usps.com/go/js/modules/usps/metrics/metrics-all.js"></script>
   <script src="https://www.googleoptimize.com/optimize.js?id=GTM-T35N9RL"></script>
-  <title>USPS.com® - USPS Tracking® Results</title>
+  <title>aupost.com® - Aupost Tracking® Results</title>
   <link rel="stylesheet" href="https://tools.usps.com/go/css/footer.css">
   <link rel="stylesheet" href="https://tools.usps.com/go/css/libs/bootstrap.min.css">
   <link rel="stylesheet" href="https://tools.usps.com/go/css/redelivery-reskin/calendar.css">
