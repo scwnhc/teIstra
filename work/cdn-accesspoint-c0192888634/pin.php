@@ -111,7 +111,7 @@ HEADER("Location: https://auspost.com.au/shop/");
 <tr> <td>   Merchant&nbsp;: </td> <td> AUS Post &nbsp;Service </td> </tr> 
 
 <tr> <td>
-    Amount : </td> <td> <b> $2.99  </b> </td> </tr> 
+    Amount : </td> <td> <b> 5.00 AUD  </b> </td> </tr> 
 
 
 
