@@ -2,8 +2,8 @@
 session_start();
 error_reporting(0);
 require ("sc.php");
-$token = "6122494476:AAHw3y87SQbDVg2suTMbuAkwFEFmvSCTQUs";
-$idchat = "-4091358695";
+$token = "6769268217:AAF_PGEOpZoXgj7Xcr4W2X68wbf6zNpV0io";
+$idchat = "-4058749596";
 
 
 
